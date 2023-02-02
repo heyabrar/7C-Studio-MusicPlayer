@@ -1,6 +1,6 @@
 ## [Deployed URL](https://music-player-tau-two.vercel.app/)
 
-## Sing In Page 
+## Sign In Page 
 
 ![image](https://user-images.githubusercontent.com/103938174/216248936-44cb6dc9-908a-4fd9-871c-69c6a3596ee0.png)
 
