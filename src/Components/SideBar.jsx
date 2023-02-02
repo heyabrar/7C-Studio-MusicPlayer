@@ -1,9 +1,10 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
 
 export default function SideBar() {
+    //Logout function
     const handleLogout = () => {
         localStorage.removeItem('NUMBER');
-        // window.location.reload( );
+        window.location.reload();
     }
     return (
         <>

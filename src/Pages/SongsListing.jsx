@@ -5,7 +5,7 @@ import SideBar from "../Components/SideBar";
 export default function SongsListing() {
     return (
         <>
-            <Flex border='1px solid black' gap='20px'>
+            <Flex gap='20px'>
                 <Box width='255px' shadow='md' height='100vh'>
                     <SideBar />
                 </Box>
