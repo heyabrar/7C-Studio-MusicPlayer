@@ -6,6 +6,8 @@ export default function LoginPage ( ){
     const Toast = useToast( );
     const [number,setNumber] = useState('');
     const [VisibleModal,setVisibleModal] = useState(false);
+
+    //verifying the phone number 
     const handleSignIn = (number) =>{
         if(!number || number.length > 10 || number.length <10)
         {

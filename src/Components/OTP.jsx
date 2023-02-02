@@ -1,18 +1,20 @@
 import { Box, Button, Flex, Input, Text, useToast } from "@chakra-ui/react";
 import { useRef } from "react";
-import { json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function OTP({ setIsopen, number,setNumber}) {
     const ref = useRef();
     const Toast = useToast();
     const NaviGate = useNavigate();
 
+    //OTP component moveing input box to its right
     const handleMove = (start, end) => {
         if (start.value.length) {
             document.getElementById(end).focus();
         }
     }
 
+    //verifying the OTP
     const handleCheckOTP = () => {
         let one = document.getElementById('one').value;
         let two = document.getElementById('two').value;
@@ -32,10 +34,12 @@ export default function OTP({ setIsopen, number,setNumber}) {
         }
     }
 
+    //Resend OTP
     const handleResend = () => {
         Toast({ title: 'OTP : 1234', position: 'top', status: 'success' });
     }
 
+    //Add Another Number function
     const handleAnotherNumber = () => {
         setIsopen(false)
     }

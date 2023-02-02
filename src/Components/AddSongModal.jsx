@@ -8,11 +8,12 @@ export default function AddSongModal({ isOpen, setIsopen, handleAddSong }) {
     const [image, setImage] = useState('');
     const Toast = useToast();
     const date = new Date();
-    let day = date.getDate();
+    let day = date.getDate();                                         
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
     let currentDate = `${day}/${month}/${year}`;
 
+    //Add song function, send the payload as prop to handleAddSong
     const AddSong = (name, url, source, image) => {
         if (!name || !url || !source || !image) {
             Toast({ title: 'Please fill the input fields', status: 'error', position: 'top' })
@@ -30,6 +31,7 @@ export default function AddSongModal({ isOpen, setIsopen, handleAddSong }) {
         }
     }
 
+    //Modal close function
     const onClose = () => {
         setIsopen(false)
     };

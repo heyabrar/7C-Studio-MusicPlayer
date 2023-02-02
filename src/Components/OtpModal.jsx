@@ -2,9 +2,12 @@ import { Button, Container, Modal, ModalBody, ModalCloseButton, ModalContent, Mo
 import OTP from "./OTP";
 
 export default function OptModal({ number, isOpen, setIsopen,setNumber }) {
+  
+  //Modal close function
   const onClose = () => {
     setIsopen(false)
   };
+
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose} className='TotalModal' size='full'>
