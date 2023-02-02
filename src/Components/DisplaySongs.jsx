@@ -8,14 +8,9 @@ import AddSongModal from "./AddSongModal";
 import TableComponent from "./Table";
 
 export default function DisplaySongs() {
-    const [isPlay, setIsPlay] = useState(false);
     const DisPatch = useDispatch();
     const Toast = useToast();
     const [VisibleModal, setVisibleModal] = useState(false);
-
-    const AddSongOpenModal = () => {
-        setVisibleModal(true)
-    }
     const { Music, isLoading, isError } = useSelector((store) => {
         return {
             Music: store.Music,
@@ -24,6 +19,12 @@ export default function DisplaySongs() {
         }
     })
 
+    //Opens modal to add a music
+    const AddSongOpenModal = () => {
+        setVisibleModal(true)
+    }
+
+    //Get all the music fro api basically a get request
     const handleGetMusic = () => {
         DisPatch(GetMusicRequest());
         GetMusicData().then((res) => {
@@ -33,19 +34,23 @@ export default function DisplaySongs() {
     }
 
 
+    //Adds new music to the api basically post request
     const AddNewSong = (payload)=>{
         return AddMusicData(payload).then((res)=>{
+            Toast({title : 'New Music Added', status : 'success', position : 'top'})
         })
         .catch((err)=> console.log(err))
     }
+
     const handleAddSong = (paylaod) =>{
        AddNewSong(paylaod).then(( )=> handleGetMusic( ));
     }
 
 
+    //Deletes the music, a delete request
     const handleDeleteMusic = (id) => {
         return DeleteMusicData(id).then((res) => {
-            Toast({ title: 'Audio Deleted', status: 'success', position: 'top' })
+            Toast({ title: 'Music Deleted', status: 'success', position: 'top' })
         })
             .catch((err) => console.log(err))
     }
@@ -54,7 +59,7 @@ export default function DisplaySongs() {
         handleDeleteMusic(id).then(() => handleGetMusic());
     }
 
-
+//to render everytime when anything changes
     useEffect(() => {
         handleGetMusic();
     }, []);

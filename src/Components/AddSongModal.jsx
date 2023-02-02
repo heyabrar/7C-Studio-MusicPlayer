@@ -1,15 +1,12 @@
-import { Button, Container, Flex, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, Text } from "@chakra-ui/react"
+import { Button, Container, Flex, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, Text, useToast } from "@chakra-ui/react"
 import { useState } from "react";
 
 export default function AddSongModal({ isOpen, setIsopen, handleAddSong }) {
-
     const [name, setName] = useState('');
     const [url, setUrl] = useState('');
     const [source, setSource] = useState('');
     const [image, setImage] = useState('');
-    const onClose = () => {
-        setIsopen(false)
-    };
+    const Toast = useToast();
     const date = new Date();
     let day = date.getDate();
     let month = date.getMonth() + 1;
@@ -17,15 +14,25 @@ export default function AddSongModal({ isOpen, setIsopen, handleAddSong }) {
     let currentDate = `${day}/${month}/${year}`;
 
     const AddSong = (name, url, source, image) => {
-        const paylaod = {
-            name,
-            link: url,
-            source,
-            thumbnail: image,
-            date : currentDate
+        if (!name || !url || !source || !image) {
+            Toast({ title: 'Please fill the input fields', status: 'error', position: 'top' })
         }
-        handleAddSong(paylaod)
+        else {
+            const paylaod = {
+                name,
+                link: url,
+                source,
+                thumbnail: image,
+                date: currentDate
+            }
+            handleAddSong(paylaod)
+            setIsopen(false)
+        }
     }
+
+    const onClose = () => {
+        setIsopen(false)
+    };
     return (
         <>
             <Modal isOpen={isOpen} onClose={onClose} className='TotalModal' size="lg">
@@ -47,8 +54,8 @@ export default function AddSongModal({ isOpen, setIsopen, handleAddSong }) {
                                 <Input type='text' placeholder="Song Source" value={source} onChange={(e) => setSource(e.target.value)} />
 
 
-                                <FormLabel mt='15px'>Add Profile Thubmnail</FormLabel>
-                                <Input type='file' value={image} onChange={(e) => setImage(e.target.value)} />
+                                <FormLabel mt='15px'>Add Profile Thubmnail URL</FormLabel>
+                                <Input type='text' value={image} name='avatar' onChange={(e) => setImage(e.target.value)} />
                             </FormControl>
 
                             <Flex float='right' mt='10px' marginBottom='20px' gap='5px'>
