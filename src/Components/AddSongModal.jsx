@@ -26,8 +26,13 @@ export default function AddSongModal({ isOpen, setIsopen, handleAddSong }) {
                 thumbnail: image,
                 date: currentDate
             }
+            
             handleAddSong(paylaod)
-            setIsopen(false)
+            setIsopen(false);
+            setImage('');
+            setName('');
+            setSource('');
+            setUrl('');
         }
     }
 
