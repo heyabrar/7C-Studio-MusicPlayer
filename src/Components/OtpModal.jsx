@@ -1,7 +1,7 @@
 import { Button, Container, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react"
 import OTP from "./OTP";
 
-export default function OptModal({ number, isOpen, setIsopen }) {
+export default function OptModal({ number, isOpen, setIsopen,setNumber }) {
   const onClose = () => {
     setIsopen(false)
   };
@@ -12,7 +12,7 @@ export default function OptModal({ number, isOpen, setIsopen }) {
           <ModalCloseButton />
           <Container>
             <ModalBody>
-              <OTP setIsopen={setIsopen} number={number} />
+              <OTP setIsopen={setIsopen} number={number} setNumber={setNumber}/>
             </ModalBody>
           </Container>
         </ModalContent>

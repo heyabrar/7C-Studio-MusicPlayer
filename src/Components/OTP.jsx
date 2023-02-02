@@ -1,8 +1,8 @@
 import { Box, Button, Flex, Input, Text, useToast } from "@chakra-ui/react";
 import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 
-export default function OTP({ setIsopen, number }) {
+export default function OTP({ setIsopen, number,setNumber}) {
     const ref = useRef();
     const Toast = useToast();
     const NaviGate = useNavigate();
@@ -19,16 +19,21 @@ export default function OTP({ setIsopen, number }) {
         let three = document.getElementById('three').value;
         let four = document.getElementById('four').value;
 
-        if (one !== '1' || two !== '2' || three !== '3' || four !== '4') Toast({ title: 'Incorrect OTP', position: 'top', status: 'error' })
+        if (one !== '1' || two !== '2' || three !== '3' || four !== '4') 
+        {
+            Toast({ title: 'Incorrect OTP', position: 'top', status: 'error' });
+        }
+
         else {
             NaviGate('/songs')
             Toast({ title: 'LogIn Successfull', position: 'top', status: 'success' });
+            localStorage.setItem('NUMBER', JSON.stringify(number));
             setIsopen(false)
         }
     }
 
     const handleResend = () => {
-        Toast({ title: 'OTP : 1234', position: 'top', status: 'success' })
+        Toast({ title: 'OTP : 1234', position: 'top', status: 'success' });
     }
 
     const handleAnotherNumber = () => {

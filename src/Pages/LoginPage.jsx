@@ -7,7 +7,7 @@ export default function LoginPage ( ){
     const [number,setNumber] = useState('');
     const [VisibleModal,setVisibleModal] = useState(false);
     const handleSignIn = (number) =>{
-        if(!number || number.length > 10)
+        if(!number || number.length > 10 || number.length <10)
         {
             Toast({title : 'Enter Mobile Number Or Envalid Mobile Number', position:'top', status : 'error'})
         }
@@ -15,7 +15,6 @@ export default function LoginPage ( ){
         {
             Toast({title : 'OTP : 1234', position:'top', status : 'success'});
             setVisibleModal(true);
-            // setNumber('');
         }
     }
     return (
@@ -29,7 +28,7 @@ export default function LoginPage ( ){
                 <Input placeholder="Phone Number" type='number' value={number} onChange={(e)=> setNumber(e.target.value)} width='407px' borderRadius='8px' border='none' focusBorderColor='white' />
                 <Button onClick={( ) => handleSignIn(number)} bg='#552583' color='white' width='410px' borderRadius='12px' mt='10px' colorScheme='#552583 '>Sign In</Button>
             </Box>
-            <OptModal number={number} isOpen={VisibleModal} setIsopen={setVisibleModal}/>
+            <OptModal number={number} isOpen={VisibleModal} setIsopen={setVisibleModal} setNumber={setNumber}/>
         </Container>
         </>
     )
