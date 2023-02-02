@@ -84,6 +84,8 @@ export default function DisplaySongs() {
 
 
 //Dummy music URL's
+//https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3
+//https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3
 //http://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/theme_01.mp3
 //http://commondatastorage.googleapis.com/codeskulptor-demos/riceracer_assets/music/race2.ogg
 //http://commondatastorage.googleapis.com/codeskulptor-demos/riceracer_assets/music/win.ogg
