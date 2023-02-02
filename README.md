@@ -19,7 +19,7 @@
 ![image](https://user-images.githubusercontent.com/103938174/216249528-d3d4fa61-1671-484d-897d-6aa906ed748f.png)
 
 ## Features
-- Signup/Login functionality
+- Login functionality
 - OTP verification
 - User can add Music
 - Music controls
